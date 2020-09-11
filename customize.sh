@@ -7,5 +7,3 @@
 #=================================================
 #1. Modify default IP
 sed -i 's/192.168.1.1/192.168.5.1/g' openwrt/package/base-files/files/bin/config_generate
-sed -i '/helloworld/d' openwrt/feeds.conf.default
-echo "src-git helloworld https://github.com/fw876/helloworld" >> openwrt/feeds.conf.default
