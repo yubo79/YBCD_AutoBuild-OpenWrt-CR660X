@@ -68,6 +68,7 @@ jobs:
       run: |
         sed -i '/helloworld/d' ./feeds.conf.default
         echo "src-git helloworld https://github.com/fw876/helloworld" >> ./feeds.conf.default
+        sed -i 's/# CONFIG_BINFMT_MISC is not set/CONFIG_BINFMT_MISC=y/g' ./target/linux/generic/config-5.4
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds install -a
