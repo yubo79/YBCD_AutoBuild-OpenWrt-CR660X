@@ -69,7 +69,7 @@ jobs:
     - name: Update & Install feeds
       working-directory: ./openwrt
       run: |
-        #sed -i 's/# CONFIG_BINFMT_MISC is not set/CONFIG_BINFMT_MISC=y/g' ./target/linux/generic/config-5.4
+        sed -i 's/# CONFIG_BINFMT_MISC is not set/CONFIG_BINFMT_MISC=y/g' ./target/linux/generic/config-5.4
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         ./scripts/feeds install -a
@@ -99,8 +99,7 @@ jobs:
       working-directory: ./openwrt
       run: |
         echo -e "$(nproc) thread build."
-        #make -j$(nproc) V=s
-        make -j1 V=s
+        make -j$(nproc) V=s
 
     - name : Upload artifact
       uses: actions/upload-artifact@master
