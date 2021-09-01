@@ -65,8 +65,10 @@ jobs:
         REPO_BRANCH: master
       run: |
         # git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
-        git clone $REPO_URL -b $REPO_BRANCH openwrt 
-        wget -O openwrt/include/kernel-version.mk https://www.126126.xyz/kernel-version.mk
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        cd openwrt
+        git reset --hard $(curl -s https://www.126126.xyz/commit_id.txt)
+        # wget -O openwrt/include/kernel-version.mk https://www.126126.xyz/kernel-version.mk
         # git clone https://github.com/esirplayground/luci-app-eqos.git openwrt/package/eqos
         # mv openwrt/package/eqos/po/zh_Hans openwrt/package/eqos/po/zh-cn
         # cd openwrt
