@@ -66,8 +66,11 @@ jobs:
       run: |
         # git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        cd openwrt        
-        git reset --hard 6006596973ae5e61b6c150a3eb0a7e90d8102e96
+        cd openwrt
+        git config --global user.email "youname@gmail.com"
+        git config --global user.name "youname"
+        git revert --no-edit 634663fe5663c40893ce6527e48af170c80d5626
+        git revert --no-edit a74c473f42394c02695f909f1cbf9283b10dfc5d
         # git clone https://github.com/esirplayground/luci-app-eqos.git openwrt/package/eqos
         # mv openwrt/package/eqos/po/zh_Hans openwrt/package/eqos/po/zh-cn
         # cd openwrt
